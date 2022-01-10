@@ -127,6 +127,7 @@ void zarzadzanie_kontem(int czy_admin, int id, Gracz tab[])
 {
     system("cls");
     std::cout << "Dane" << std::endl
+        << "Twoj wynik: "<< tab[id].wynik << std::endl
         << "[1]Login: " << tab[id].login << std::endl
         << "[2]Haslo: " << tab[id].haslo << std::endl
         << "[3]Powrot do menu" << std::endl
@@ -172,19 +173,31 @@ void tworzenie_konta(int id, Gracz tab[])
     system("cls");
     std::cout << "Wpisz login: ";
     std::cin >> login;
-    std::cout << "Wpisz haslo: ";
-    std::cin >> haslo;
-    tab[id].dodawanie(login, haslo, 0, 0, 1);
-    zapis(tab);
-    std::cout << "Konto stworzono. Nalezy sie zalogowac" << std::endl;
-    Sleep(1500);
-    logowanie(tab);
+    int j = 0;
+    while (tab[j].login != "domyslne"){
+        if (tab[j].login != login) {
+            std::cout << "Wpisz haslo: ";
+            std::cin >> haslo;
+            tab[id].dodawanie(login, haslo, 0, 0, 1);
+            zapis(tab);
+            std::cout << "Konto stworzono. Nalezy sie zalogowac" << std::endl;
+            Sleep(1500);
+            logowanie(tab);
+        }
+        else {
+            std::cout << "Taki login juz istnieje!" << std::endl;
+            Sleep(1500);
+            tworzenie_konta(id, tab);
+        }
+        j++;
+    }
+    
 }
 
 void zmienianie_dostepu_do_kont(int czy_admin, int id, Gracz tab[])
 {
     system("cls");
-    std::cout << "[-1] powrot do menu";
+    std::cout << "[-1] powrot do menu" << std::endl;
     wypisanie(tab);
     std::cout << "Wybierz numer gracza, ktoremu dostep do konta chcesz zmienic " << std::endl;
     int pom;
@@ -229,7 +242,7 @@ void zmienianie_dostepu_do_kont(int czy_admin, int id, Gracz tab[])
 void zarzadzanie_kontami_graczy(int czy_admin, int id, Gracz tab[])
 {
     system("cls");
-    std::cout << "[-1] powrot do menu";
+    std::cout << "[-1] powrot do menu" << std::endl;
     wypisanie(tab);
     std::cout << "Wybierz numer gracza, ktorego dane chcesz zmienic: ";
     int index;
