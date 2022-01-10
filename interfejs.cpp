@@ -4,7 +4,7 @@
 #include "gracz.h"
 #include "rozgrywka.h"
 
-void menu_logowania(Gracz tab[]) {
+void menu_logowania(int id, Gracz tab[]) {
     std::cout << "----------------MENU----------------\n"
         << "[1] Logowanie\n"
         << "[2] Tworzenie konta\n"
@@ -20,6 +20,7 @@ void menu_logowania(Gracz tab[]) {
         break;
     case 2:
         std::cout << "Wybrano tworzenie konta" << std::endl;
+        tworzenie_konta(id, tab);
         break;
     case 3:
         system("cls");
@@ -30,7 +31,7 @@ void menu_logowania(Gracz tab[]) {
         std::cout << "Nie ma takiej opcji!" << std::endl;
         Sleep(1500);
         system("cls");
-        menu_logowania(tab);
+        menu_logowania(id, tab);
     }
 }
 
@@ -54,11 +55,12 @@ void menu(int czy_admin, int id, Gracz tab[]) {
         case 2:
             system("cls");
             std::cout << "Wybrano zarzadzanie kontem" << std::endl;
+            zarzadzanie_kontem(czy_admin, id, tab);
             break;
         case 3:
             system("cls");
             std::cout << "Wylogowano!" << std::endl;
-            menu_logowania(tab);
+            menu_logowania(id, tab);
         default:
             std::cout << "Nie ma takiej opcji!" << std::endl;
             Sleep(1500);
@@ -84,16 +86,19 @@ void menu(int czy_admin, int id, Gracz tab[]) {
             break;
         case 2:
             std::cout << "Wybrano zarzadzanie kontem" << std::endl;
+            zarzadzanie_kontem(czy_admin, id, tab);
             break;
         case 3:
             std::cout << "Wybrano zarzadzanie kontami graczy" << std::endl;
+            zarzadzanie_kontami_graczy(czy_admin, id, tab);
             break;
         case 4:
             std::cout << "Wybrano blokowanie dostepu do kont graczy" << std::endl;
+            zmienianie_dostepu_do_kont(czy_admin, id, tab);
             break;
         case 5:
             std::cout << "Wylogowano!" << std::endl;
-            menu_logowania(tab);
+            menu_logowania(id, tab);
         default:
             std::cout << "Nie ma takiej opcji!" << std::endl;
             Sleep(1500);
