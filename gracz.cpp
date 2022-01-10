@@ -80,6 +80,11 @@ void logowanie(Gracz tab[]) {
         if (tab[i].login == login) {
             std::cout << "Wpisz haslo: ";
             std::cin >> haslo;
+            if (tab[i].dostep_do_konta == false)
+            {
+                std::cout << "Brak dostepu do konta. Konto zablokowane.";
+                logowanie(tab);
+            }
             if (tab[i].haslo == haslo) {
                 if (tab[i].rola_admin == true) {
                     menu(1, i, tab);
