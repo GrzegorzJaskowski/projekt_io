@@ -5,6 +5,7 @@
 #include "rozgrywka.h"
 
 void menu_logowania(int id, Gracz tab[]) {
+    system("cls");
     std::cout << "----------------MENU----------------\n"
         << "[1] Logowanie\n"
         << "[2] Tworzenie konta\n"
@@ -15,10 +16,12 @@ void menu_logowania(int id, Gracz tab[]) {
     std::cin >> a;
     switch (a) {
     case 1:
+        system("cls");
         std::cout << "Wybrano logowanie" << std::endl;
         logowanie(tab);
         break;
     case 2:
+        system("cls");
         std::cout << "Wybrano tworzenie konta" << std::endl;
         tworzenie_konta(id, tab);
         break;
@@ -28,9 +31,9 @@ void menu_logowania(int id, Gracz tab[]) {
         std::cout << "Zakonczono!" << std::endl;
         exit(0);
     default:
+        system("cls");
         std::cout << "Nie ma takiej opcji!" << std::endl;
         Sleep(1500);
-        system("cls");
         menu_logowania(id, tab);
     }
 }
@@ -64,7 +67,6 @@ void menu(int czy_admin, int id, Gracz tab[]) {
         default:
             std::cout << "Nie ma takiej opcji!" << std::endl;
             Sleep(1500);
-            system("cls");
             menu(czy_admin, id, tab);
         }
 

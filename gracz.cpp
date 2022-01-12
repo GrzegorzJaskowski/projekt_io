@@ -199,20 +199,23 @@ void zmienianie_dostepu_do_kont(int czy_admin, int id, Gracz tab[])
     system("cls");
     std::cout << "[-1] powrot do menu" << std::endl;
     wypisanie(tab);
-    std::cout << "Wybierz numer gracza, ktoremu dostep do konta chcesz zmienic " << std::endl;
+    std::cout << "Wybierz opcje lub numer gracza, ktoremu zmienic dostep do konta: ";
     int pom;
     std::cin >> pom;
-    if (pom > 9) {
+    if (pom > 9 || pom < -1 || tab[pom].login == "domyslne") {
         std::cout << "Wybrano zla opcje" << std::endl;
-        Sleep(1500);
+        Sleep(1000);
         zmienianie_dostepu_do_kont(czy_admin, id, tab);
     }
+    else if (pom == -1)
+    {
+        menu(czy_admin, id, tab);
+    }
+    
     std::cout << "Wprowadz 1 jesli chcesz zablokowac konto, 2 jesli chcesz je odblokowac, 3 aby wrocic do menu: ";
     int a;
     std::cin >> a;
     switch (a) {
-    case -1:
-        menu(czy_admin, id, tab);
     case 1:
         tab[pom].setdostep(false);
         std::cout << "Zmieniono dostep! " << std::endl;
