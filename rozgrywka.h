@@ -7,3 +7,5 @@ int ruch_przeciwnika_latwy(char tab[]);
 bool koniec_partii(char tab[]);
 char wygrany_symbol(char tab[]);
 void remis(int czy_admin, int id, Gracz tab[]);
+int ruch_przeciwnika_trudny(char plansza[]);
+int poziom_trudnosci(int poziom);

@@ -22,8 +22,13 @@ void rozpocznij_rozgrywke(int czy_admin, int id, Gracz tab[])
 	char znak;
 
 	system("cls");
-	std::cout << "Rozgrywka zostala rozpoczeta!" << std::endl;
-
+	std::cout << "Rozgrywka zostala rozpoczeta!" << std::endl
+		<< "[1] latwy" << std::endl
+		<< "[2] trudny" << std::endl
+		<< "Wybierz poziom trudnosci:";
+	std::cin >> poziom;
+	if (poziom !=1 && poziom != 2)
+		poziom = poziom_trudnosci(poziom);
 	while (koniec_partii(plansza))
 	{
 		Sleep(500);
@@ -80,6 +85,18 @@ void rozpocznij_rozgrywke(int czy_admin, int id, Gracz tab[])
 		if (poziom == 1)
 		{
 			pom = ruch_przeciwnika_latwy(plansza);
+			if (pom == -1)
+			{
+				system("cls");
+				wyswietl_plansze(plansza);
+				remis(czy_admin, id, tab);
+			}
+			else
+				plansza[pom] = znak;
+		}
+		else if (poziom == 2)
+		{
+			pom = ruch_przeciwnika_trudny(plansza);
 			if (pom == -1)
 			{
 				system("cls");
@@ -167,4 +184,89 @@ void remis(int czy_admin, int id, Gracz tab[])
 	std::cin.get();
 	std::cin.ignore();
 	menu(czy_admin, id, tab);
+}
+
+int ruch_przeciwnika_trudny(char plansza[])
+{
+	for (int i = 0; i < 9; i += 3)
+	{
+		if (plansza[i] == 'x' && plansza[i + 1] == 'x')
+			return i + 2;
+		else if (plansza[i] == 'x' && plansza[i + 2] == 'x')
+			return i + 1;
+		else if (plansza[i + 1] == 'x' && plansza[i + 2] == 'x')
+			return i;
+	}
+
+	for (int i = 0; i < 3; i += 1)
+	{
+		if (plansza[i] == 'x' && plansza[i + 3] == 'x')
+			return i + 6;
+		else if (plansza[i] == 'x' && plansza[i + 6] == 'x')
+			return i + 3;
+		else if (plansza[i + 3] == 'x' && plansza[i + 6] == 'x')
+			return i;
+	}
+
+	if (plansza[0] == 'x' && plansza[4] == 'x')
+		return 8;
+	else if (plansza[0] == 'x' && plansza[8] == 'x')
+		return 4;
+	else if (plansza[4] == 'x' && plansza[8] == 'x')
+		return 0;
+	else if (plansza[2] == 'x' && plansza[4] == 'x')
+		return 6;
+	else if (plansza[2] == 'x' && plansza[6] == 'x')
+		return 4;
+	else if (plansza[4] == 'x' && plansza[6] == 'x')
+		return 2;
+
+	for (int i = 0; i < 9; i += 3)
+	{
+		if (plansza[i] == 'o' && plansza[i + 1] == 'o')
+			return i + 2;
+		else if (plansza[i] == 'o' && plansza[i + 2] == 'o')
+			return i + 1;
+		else if (plansza[i+1] == 'o' && plansza[i + 2] == 'o')
+			return i;
+	}
+
+	for (int i = 0; i < 3; i += 1)
+	{
+		if (plansza[i] == 'o' && plansza[i + 3] == 'o')
+			return i + 6;
+		else if (plansza[i] == 'o' && plansza[i + 6] == 'o')
+			return i + 3;
+		else if (plansza[i + 3] == 'o' && plansza[i + 6] == 'o')
+			return i;
+	}
+
+	if (plansza[0] == 'o' && plansza[4] == 'o')
+		return 8;
+	else if (plansza[0] == 'o' && plansza[8] == 'o')
+		return 4;
+	else if (plansza[4] == 'o' && plansza[8] == 'o')
+		return 0;
+	else if (plansza[2] == 'o' && plansza[4] == 'o')
+		return 6;
+	else if (plansza[2] == 'o' && plansza[6] == 'o')
+		return 4;
+	else if (plansza[4] == 'o' && plansza[6] == 'o')
+		return 2;
+
+	return ruch_przeciwnika_latwy(plansza);
+}
+
+int poziom_trudnosci(int poziom)
+{
+	while (poziom != 1 && poziom != 2)
+	{
+		system("cls");
+		std::cout << "Niepoprawny wybor..." << std::endl
+			<< "[1] latwy" << std::endl
+			<< "[2] trudny" << std::endl
+			<< "Wybierz poziom trudnosci:";
+		std::cin >> poziom;
+	}
+	return poziom;
 }
