@@ -190,68 +190,68 @@ int ruch_przeciwnika_trudny(char plansza[])
 {
 	for (int i = 0; i < 9; i += 3)
 	{
-		if (plansza[i] == 'x' && plansza[i + 1] == 'x')
+		if (plansza[i] == 'x' && plansza[i + 1] == 'x' && plansza[i+2] != 'o')
 			return i + 2;
-		else if (plansza[i] == 'x' && plansza[i + 2] == 'x')
+		else if (plansza[i] == 'x' && plansza[i + 2] == 'x' && plansza[i+1] != 'o')
 			return i + 1;
-		else if (plansza[i + 1] == 'x' && plansza[i + 2] == 'x')
+		else if (plansza[i + 1] == 'x' && plansza[i + 2] == 'x' && plansza[i] != 'o')
 			return i;
 	}
 
 	for (int i = 0; i < 3; i += 1)
 	{
-		if (plansza[i] == 'x' && plansza[i + 3] == 'x')
+		if (plansza[i] == 'x' && plansza[i + 3] == 'x' && plansza[i+6] != 'o')
 			return i + 6;
-		else if (plansza[i] == 'x' && plansza[i + 6] == 'x')
+		else if (plansza[i] == 'x' && plansza[i + 6] == 'x' && plansza[i+3] != 'o')
 			return i + 3;
-		else if (plansza[i + 3] == 'x' && plansza[i + 6] == 'x')
+		else if (plansza[i + 3] == 'x' && plansza[i + 6] == 'x' && plansza[i] != 'o')
 			return i;
 	}
 
-	if (plansza[0] == 'x' && plansza[4] == 'x')
+	if (plansza[0] == 'x' && plansza[4] == 'x' && plansza[8] != 'o')
 		return 8;
-	else if (plansza[0] == 'x' && plansza[8] == 'x')
+	else if (plansza[0] == 'x' && plansza[8] == 'x' && plansza[4] != 'o')
 		return 4;
-	else if (plansza[4] == 'x' && plansza[8] == 'x')
+	else if (plansza[4] == 'x' && plansza[8] == 'x' && plansza[0] != 'o')
 		return 0;
-	else if (plansza[2] == 'x' && plansza[4] == 'x')
+	else if (plansza[2] == 'x' && plansza[4] == 'x' && plansza[6] != 'o')
 		return 6;
-	else if (plansza[2] == 'x' && plansza[6] == 'x')
+	else if (plansza[2] == 'x' && plansza[6] == 'x' && plansza[4] != 'o')
 		return 4;
-	else if (plansza[4] == 'x' && plansza[6] == 'x')
+	else if (plansza[4] == 'x' && plansza[6] == 'x' && plansza[2] != 'o')
 		return 2;
 
 	for (int i = 0; i < 9; i += 3)
 	{
-		if (plansza[i] == 'o' && plansza[i + 1] == 'o')
+		if (plansza[i] == 'o' && plansza[i + 1] == 'o' && plansza[i+2] != 'x')
 			return i + 2;
-		else if (plansza[i] == 'o' && plansza[i + 2] == 'o')
+		else if (plansza[i] == 'o' && plansza[i + 2] == 'o' && plansza[i + 1] != 'x')
 			return i + 1;
-		else if (plansza[i+1] == 'o' && plansza[i + 2] == 'o')
+		else if (plansza[i+1] == 'o' && plansza[i + 2] == 'o' && plansza[i] != 'x')
 			return i;
 	}
 
 	for (int i = 0; i < 3; i += 1)
 	{
-		if (plansza[i] == 'o' && plansza[i + 3] == 'o')
+		if (plansza[i] == 'o' && plansza[i + 3] == 'o' && plansza[i + 6] != 'x')
 			return i + 6;
-		else if (plansza[i] == 'o' && plansza[i + 6] == 'o')
+		else if (plansza[i] == 'o' && plansza[i + 6] == 'o' && plansza[i + 3] != 'x')
 			return i + 3;
-		else if (plansza[i + 3] == 'o' && plansza[i + 6] == 'o')
+		else if (plansza[i + 3] == 'o' && plansza[i + 6] == 'o' && plansza[i] != 'x')
 			return i;
 	}
 
-	if (plansza[0] == 'o' && plansza[4] == 'o')
+	if (plansza[0] == 'o' && plansza[4] == 'o' && plansza[8] != 'x')
 		return 8;
-	else if (plansza[0] == 'o' && plansza[8] == 'o')
+	else if (plansza[0] == 'o' && plansza[8] == 'o' && plansza[4] != 'x')
 		return 4;
-	else if (plansza[4] == 'o' && plansza[8] == 'o')
+	else if (plansza[4] == 'o' && plansza[8] == 'o' && plansza[0] != 'x')
 		return 0;
-	else if (plansza[2] == 'o' && plansza[4] == 'o')
+	else if (plansza[2] == 'o' && plansza[4] == 'o' && plansza[6] != 'x')
 		return 6;
-	else if (plansza[2] == 'o' && plansza[6] == 'o')
+	else if (plansza[2] == 'o' && plansza[6] == 'o' && plansza[4] != 'x')
 		return 4;
-	else if (plansza[4] == 'o' && plansza[6] == 'o')
+	else if (plansza[4] == 'o' && plansza[6] == 'o' && plansza[2] != 'x')
 		return 2;
 
 	return ruch_przeciwnika_latwy(plansza);
