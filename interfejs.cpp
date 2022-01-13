@@ -23,6 +23,7 @@ void menu_logowania(int id, Gracz tab[]) {
     case 2:
         system("cls");
         std::cout << "Wybrano tworzenie konta" << std::endl;
+        zapis(tab);
         tworzenie_konta(id, tab);
         break;
     case 3:
@@ -63,7 +64,8 @@ void menu(int czy_admin, int id, Gracz tab[]) {
         case 3:
             system("cls");
             std::cout << "Wylogowano!" << std::endl;
-            menu_logowania(id, tab);
+            Sleep(1500);
+            wczytywanie();
         default:
             std::cout << "Nie ma takiej opcji!" << std::endl;
             Sleep(1500);
@@ -99,8 +101,10 @@ void menu(int czy_admin, int id, Gracz tab[]) {
             zmienianie_dostepu_do_kont(czy_admin, id, tab);
             break;
         case 5:
+            system("cls");
             std::cout << "Wylogowano!" << std::endl;
-            menu_logowania(id, tab);
+            Sleep(1500);
+            wczytywanie();
         default:
             std::cout << "Nie ma takiej opcji!" << std::endl;
             Sleep(1500);
