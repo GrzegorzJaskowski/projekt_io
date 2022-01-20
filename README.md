@@ -11,4 +11,4 @@ STANDARDY KODOWANIA
 
 
 PRZYKŁAD REFAKTORYZACJI
-przykład refaktoryzaji znajduje się w funkcji main w formie komentarza
+- przykład refaktoryzaji znajduje się w funkcji main w formie komentarza
