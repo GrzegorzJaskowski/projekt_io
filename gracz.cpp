@@ -34,13 +34,13 @@ void wypisanie(Gracz tab[]) {
 void wczytywanie()
 {
     std::ifstream plik("baza.txt");
-    const int wielkosc_bazy = 10;
+    const int wielkosc_bazy = 20;
     int i = 0;
     std::string line, login_pom, haslo_pom, wynik_pom, admin_pom, dostep_pom;
     bool rola_admin_pom, dostep_do_konta_pom;
     Gracz tablica_baza[wielkosc_bazy];
     if (plik.is_open()) {
-        while (std::getline(plik, line)) {
+        while (std::getline(plik, line) && i<wielkosc_bazy) {
             std::istringstream ss(line);
             getline(ss, login_pom, ' ');
             getline(ss, haslo_pom, ' ');
