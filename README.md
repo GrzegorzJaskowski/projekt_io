@@ -12,22 +12,22 @@ STANDARDY KODOWANIA
 
 PRZYKŁAD REFAKTORYZACJI
 
-funkcja przed zmianą:
-void wypisanie(Gracz tab[]) {
-    int i = 0;
-    while (tab[i].login != "domyslne") {
-        std::cout << "[" << i << "] " << tab[i].login << " " << tab[i].haslo << " " << tab[i].wynik << " " << tab[i].rola_admin << " " << tab[i].dostep_do_konta << std::endl;
-        i++;
-    }
-}
+funkcja przed zmianą: <br />
+void wypisanie(Gracz tab[]) { <br />
+    int i = 0; <br />
+    while (tab[i].login != "domyslne") { <br />
+        std::cout << "[" << i << "] " << tab[i].login << " " << tab[i].haslo << " " << tab[i].wynik << " " << tab[i].rola_admin << " " << tab[i].dostep_do_konta << std::endl; <br />
+        i++; <br />
+    } <br />
+} <br />
 
-funkcja po zmianie:
-void wypisanie(Gracz tab[]) {
-    int i = 0;
-    while (tab[i].login != "domyslne") {
-        std::cout << "[" << i << "] " << tab[i].login << " " << tab[i].haslo
-            << " " << tab[i].wynik << " " << tab[i].rola_admin
-            << " " << tab[i].dostep_do_konta << std::endl;
-        i++;
-    }
-}
+funkcja po zmianie: <br />
+void wypisanie(Gracz tab[]) { <br />
+    int i = 0; <br />
+    while (tab[i].login != "domyslne") { <br />
+        std::cout << "[" << i << "] " << tab[i].login << " " << tab[i].haslo <br />
+            << " " << tab[i].wynik << " " << tab[i].rola_admin <br />
+            << " " << tab[i].dostep_do_konta << std::endl; <br />
+        i++; <br />
+    } <br />
+} <br />
