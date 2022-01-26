@@ -34,6 +34,10 @@ public:
     {
         dostep_do_konta = d;
     }
+    std::string getlogin()
+    {
+        return login;
+    }
 };
 
 void wczytywanie();
